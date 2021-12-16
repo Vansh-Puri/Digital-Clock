@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>Digital Clock</title>
+    </head>
+    <style>
+        body{
+            background: linear-gradient(beige, lightblue);
+            user-select: none;
+
+        }
+        .clock{
+            font-size: 100px;
+            text-align: center;
+            font-weight: bolder;
+        }
+    </style>
+    <body>
+        <div class="clock">00:00:00</div>
+        <script>
+            function Time(){
+                var clockArea=document.querySelector(".clock")
+                var currentDate=new Date();
+                console.log(currentDate);
+
+                var zone="AM"
+                var sec=currentDate.getSeconds()
+                var min=currentDate.getMinutes()
+                var hrs=currentDate.getHours()
+
+                if(sec<10){
+                    sec="0"+sec;
+                }
+                if(hrs<10){
+                    hrs="0"+hrs;
+                }
+                if(min<10){
+                    min="0"+min;
+                }
+                if(hrs>11) {
+                    zone="PM"
+                }
+                else{
+                    zone="AM"
+                }
+                if(hrs>12) {
+                    hrs=hrs-12;
+                }
+
+                clockArea.innerHTML=hrs+":"+min+":"+sec+" "+zone;
+            }
+            setInterval(Time, 100)
+        </script>
+    </body>
+</html>
